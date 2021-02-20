@@ -7,7 +7,9 @@ const GET_POST_BY_SLUG = `
       slug
       content {
         html
+        markdown
       }
+      publishedAt
     }
   }
 `;

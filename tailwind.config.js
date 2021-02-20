@@ -11,9 +11,12 @@ module.exports = {
       },
       fontFamily: {
         monospace: "monospace",
+        inter: "Inter, Roboto",
       },
       fontSize: {
         standard: "18px",
+        postHeader: "30px",
+        postSubheader: "24px",
       },
     },
   },

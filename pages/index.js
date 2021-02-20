@@ -1,7 +1,7 @@
 import Head from "next/head";
-import Link from "next/link";
 import getPublishedPosts from "../graphcms/queries/getPublishedPosts";
-import "tailwindcss/tailwind.css";
+import { SectionItemWrapper, SectionItem } from "../components/Home/SectionComponents";
+import { QUESTIONS, INTERESTS, SOCIAL } from "../utils/homePageData";
 
 export async function getStaticProps() {
   const posts = await getPublishedPosts();
@@ -13,46 +13,48 @@ export async function getStaticProps() {
   };
 }
 
-const QUESTIONS = [
-  {
-    category: "life",
-    description:
-      "what constitutes a 'successful' life? are aliens real? how can we use psychedelics to help us heal?",
-  },
-  {
-    category: "work",
-    description: "what would a community owned and operated digital publication look like?",
-  },
-];
-
-const SOCIAL = [
-  {
-    name: "twitter",
-    url: "https://twitter.com/patrickxrivera",
-    description: "some shitposting, mostly simping for crypto",
-  },
-  {
-    name: "instagram",
-    url: "https://instagram.com/patrickxrivera",
-    description: "to keep up w/ friends and be jealous of celebrities",
-  },
-  {
-    name: "github",
-    url: "https://github.com/patrickxrivera",
-    description: "where some of my code lives",
-  },
-];
-
 export default function Home({ posts }) {
+  const renderEssays = () => (
+    <SectionItemWrapper sectionHeader="essays">
+      {posts.map((post) => (
+        <SectionItem header={post.title} description={post.excerpt} url={`/post/${post.slug}`} />
+      ))}
+    </SectionItemWrapper>
+  );
+
+  const renderInterests = () => (
+    <SectionItemWrapper sectionHeader="stuff i like">
+      {INTERESTS.map(({ category, description }) => (
+        <SectionItem header={category} description={description} />
+      ))}
+    </SectionItemWrapper>
+  );
+
+  const renderQuestions = () => (
+    <SectionItemWrapper sectionHeader="questions i ask myself late at night">
+      {QUESTIONS.map(({ category, description }) => (
+        <SectionItem header={category} description={description} />
+      ))}
+    </SectionItemWrapper>
+  );
+
+  const renderSocialLinks = () => (
+    <SectionItemWrapper sectionHeader="social presence">
+      {SOCIAL.map(({ name, url, description }) => (
+        <SectionItem header={name} description={description} url={url} openLinkInNewTab />
+      ))}
+    </SectionItemWrapper>
+  );
+
   return (
     <>
       <Head>
-        <title>Create Next App</title>
+        <title>home</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className="bg-lightBlack text-brightGreen font-monospace p-8 text-standard">
-        <div className="w-3/5">
+        <div className="lg:w-3/5">
           <p className="text-pinkish">
             hi, i'm Patrick Rivera.
             <br />
@@ -74,59 +76,12 @@ export default function Home({ posts }) {
             </a>
             .
             <br />
-            <br />i also like to write about crypto, social networks, and random life stuff.
+            <br />i also write about crypto, technical systems, and random life stuff.
           </p>
-          <p className="text-pinkish mt-20 mb-2">essays</p>
-          <ul>
-            {posts.map((post) => (
-              <div className="flex mt-6">
-                <span>〉</span>
-                <li className="ml-2">
-                  <Link href={`/post/${post.slug}`}>
-                    <a className="text-mustard hover:text-black hover:bg-mustard focus:text-black focus:bg-mustard">
-                      {post.title}
-                    </a>
-                  </Link>
-                  <p>{post.excerpt}</p>
-                </li>
-              </div>
-            ))}
-          </ul>
-          <p className="text-pinkish mt-20 mb-2">questions i ask myself late at night</p>
-          <ul>
-            {QUESTIONS.map(({ category, description }) => (
-              <div className="flex mt-6">
-                <span>〉</span>
-                <li className="ml-2">
-                  <span
-                    target="_blank"
-                    className="text-mustard hover:text-black hover:bg-mustard focus:text-black focus:bg-mustard"
-                  >
-                    {category}
-                  </span>
-                  <p>{description}</p>
-                </li>
-              </div>
-            ))}
-          </ul>
-          <p className="text-pinkish mt-20 mb-2">social presence</p>
-          <ul>
-            {SOCIAL.map(({ name, url, description }) => (
-              <div className="flex mt-6">
-                <span>〉</span>
-                <li className="ml-2">
-                  <a
-                    href={url}
-                    target="_blank"
-                    className="text-mustard hover:text-black hover:bg-mustard focus:text-black focus:bg-mustard"
-                  >
-                    {name}
-                  </a>
-                  <p>{description}</p>
-                </li>
-              </div>
-            ))}
-          </ul>
+          {renderEssays()}
+          {renderInterests()}
+          {renderQuestions()}
+          {renderSocialLinks()}
           <div className="mt-16 mb-4">
             <p className="text-pinkish">
               website design inspired by{" "}

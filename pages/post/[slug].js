@@ -1,8 +1,10 @@
 import Head from "next/head";
 import renderHTML from "react-render-html";
+import Image from "next/image";
 import Link from "next/link";
-import graphcms from "../../graphcms";
 import getPostBySlug from "../../graphcms/queries/getPostBySlug";
+import getPublishedPosts from "../../graphcms/queries/getPublishedPosts";
+import moment from "moment";
 
 export async function getStaticProps({ params }) {
   const post = await getPostBySlug(params.slug);
@@ -15,15 +17,7 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const { posts } = await graphcms.request(
-    `
-        query MyQuery {
-          posts(stage: PUBLISHED) {
-            slug
-          }
-        }
-      `
-  );
+  const posts = await getPublishedPosts();
 
   return {
     paths: posts.map(({ slug }) => ({
@@ -33,14 +27,31 @@ export async function getStaticPaths() {
   };
 }
 
-export default function Post({ post }) {
+function MysteriousPic() {
   return (
-    <div>
-      <Link href="/">
-        <a>Home</a>
-      </Link>
-      <h1>{post.title}</h1>
-      {renderHTML(post.content.html)}
+    <Link href="/">
+      <Image
+        className="cursor-pointer rounded-sm"
+        src="/profile-pic.jpg"
+        alt="profile-pic"
+        width="80"
+        height="80"
+      />
+    </Link>
+  );
+}
+
+export default function Post({ post }) {
+  const formattedDate = moment(post.publishedAt).format("MMMM Do YYYY");
+
+  return (
+    <div className="p-4 lg:w-3/5 lg:pl-36">
+      <MysteriousPic />
+      <div className="text-gray-800">
+        <h1 className="mt-4 mb-4">{post.title}</h1>
+        <p className="italic mb-4">{formattedDate}</p>
+        {renderHTML(post.content.html)}
+      </div>
     </div>
   );
 }
