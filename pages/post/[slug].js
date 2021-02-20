@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import getPostBySlug from "../../graphcms/queries/getPostBySlug";
 import getPublishedPosts from "../../graphcms/queries/getPublishedPosts";
+import NewsletterSignUp from "../../components/NewsletterSignUp";
 import moment from "moment";
 
 export async function getStaticProps({ params }) {
@@ -50,12 +51,15 @@ export default function Post({ post }) {
         <title>{post.title}</title>
         <link rel="icon" href="/terminal-favicon.ico" />
       </Head>
-      <div className="p-4 lg:w-3/5 lg:pl-36">
+      <div className="p-4 lg:w-3/5 lg:pl-36 text-gray-800">
         <MysteriousPic />
-        <div className="text-gray-800">
+        <div>
           <h1 className="mt-4 mb-4">{post.title}</h1>
           <p className="italic mb-4">{formattedDate}</p>
           {renderHTML(post.content.html)}
+        </div>
+        <div className="mt-20 mb-6">
+          <NewsletterSignUp />
         </div>
       </div>
     </>

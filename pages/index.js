@@ -76,7 +76,7 @@ export default function Home({ posts }) {
             </a>
             .
             <br />
-            <br />i also write about crypto, technical systems, and random life stuff.
+            <br />i also write about crypto, startups, and life.
           </p>
           {renderEssays()}
           {renderInterests()}
