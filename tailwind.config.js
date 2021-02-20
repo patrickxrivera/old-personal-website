@@ -18,6 +18,9 @@ module.exports = {
         postHeader: "30px",
         postSubheader: "24px",
       },
+      maxWidth: {
+        post: "900px",
+      },
     },
   },
   variants: {

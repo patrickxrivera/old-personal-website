@@ -51,7 +51,7 @@ export default function Post({ post }) {
         <title>{post.title}</title>
         <link rel="icon" href="/terminal-favicon.ico" />
       </Head>
-      <div className="p-4 lg:w-3/5 lg:pl-36 text-gray-800">
+      <div className="p-4 max-w-post lg:w-3/5 lg:pl-36 text-gray-800">
         <MysteriousPic />
         <div>
           <h1 className="mt-4 mb-4">{post.title}</h1>
