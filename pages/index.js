@@ -54,7 +54,7 @@ export default function Home({ posts }) {
       </Head>
 
       <main className="bg-lightBlack text-brightGreen font-monospace p-8 text-standard">
-        <div className="lg:w-3/5">
+        <div className="lg:w-3/5 max-w-post">
           <p className="text-pinkish">
             hi, i'm Patrick Rivera.
             <br />
