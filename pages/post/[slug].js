@@ -45,13 +45,19 @@ export default function Post({ post }) {
   const formattedDate = moment(post.publishedAt).format("MMMM Do YYYY");
 
   return (
-    <div className="p-4 lg:w-3/5 lg:pl-36">
-      <MysteriousPic />
-      <div className="text-gray-800">
-        <h1 className="mt-4 mb-4">{post.title}</h1>
-        <p className="italic mb-4">{formattedDate}</p>
-        {renderHTML(post.content.html)}
+    <>
+      <Head>
+        <title>{post.title}</title>
+        <link rel="icon" href="/terminal-favicon.ico" />
+      </Head>
+      <div className="p-4 lg:w-3/5 lg:pl-36">
+        <MysteriousPic />
+        <div className="text-gray-800">
+          <h1 className="mt-4 mb-4">{post.title}</h1>
+          <p className="italic mb-4">{formattedDate}</p>
+          {renderHTML(post.content.html)}
+        </div>
       </div>
-    </div>
+    </>
   );
 }

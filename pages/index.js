@@ -50,7 +50,7 @@ export default function Home({ posts }) {
     <>
       <Head>
         <title>home</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/terminal-favicon.ico" />
       </Head>
 
       <main className="bg-lightBlack text-brightGreen font-monospace p-8 text-standard">
