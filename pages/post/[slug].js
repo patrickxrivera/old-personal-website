@@ -42,7 +42,7 @@ function MysteriousPic() {
 }
 
 export default function Post({ post }) {
-  const formattedDate = moment(post.publishedAt).format("MMMM Do YYYY");
+  const formattedDate = moment(post.date).format("MMMM Do YYYY");
 
   return (
     <>

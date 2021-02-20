@@ -20,16 +20,30 @@ a {
 @tailwind utilities;
 
 @layer base {
-  h1 {
+  h1,
+  .h1 {
     @apply text-postHeader;
     @apply font-medium;
     @apply leading-tight;
   }
-  h2 {
+  h2,
+  .h2 {
     @apply text-postSubheader;
     @apply font-medium;
     @apply leading-tight;
     @apply mt-12;
+  }
+
+  h3,
+  .h3 {
+    @apply text-lg;
+    @apply font-medium;
+    @apply leading-tight;
+    @apply mt-12;
+  }
+
+  li {
+    @apply my-2;
   }
 
   p {
@@ -42,5 +56,25 @@ a {
 
   a {
     text-decoration: underline;
+  }
+
+  ol {
+    display: block;
+    list-style-type: decimal;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+  }
+
+  ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
   }
 }

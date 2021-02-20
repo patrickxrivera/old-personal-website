@@ -36,7 +36,7 @@ export function SectionItem({ header, description, url, openLinkInNewTab }) {
   return (
     <div className="flex mt-6">
       <span>〉</span>
-      <li className="ml-2 flex flex-col">{url ? renderLinkedItem() : renderPlainItem()}</li>
+      <li className="mt-0 ml-2 flex flex-col">{url ? renderLinkedItem() : renderPlainItem()}</li>
     </div>
   );
 }
@@ -45,7 +45,7 @@ export function SectionItemWrapper({ sectionHeader, children }) {
   return (
     <>
       <SectionHeader text={sectionHeader} />
-      <ul>{children}</ul>
+      <ul style={{ paddingInlineStart: 0 }}>{children}</ul>
     </>
   );
 }

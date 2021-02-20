@@ -10,6 +10,7 @@ const GET_POST_BY_SLUG = `
         markdown
       }
       publishedAt
+      date
     }
   }
 `;
