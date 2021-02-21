@@ -15,7 +15,7 @@ export const INTERESTS = [
   {
     category: "professional",
     description:
-      "crypto, software engineering, product development, business strategy, community building, investing, teaching, writing, growth marketing",
+      "crypto, software engineering, product development, business strategy, community building, investing, teaching, writing",
   },
   {
     category: "music",
@@ -23,7 +23,8 @@ export const INTERESTS = [
   },
   {
     category: "fun",
-    description: "crossfit workouts, reading autobiographies, psychedelics",
+    description:
+      "crossfit, yoga, biking, autobiographies, psychedelics, music festivals, YouTube, TikTok",
   },
 ];
 

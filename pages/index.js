@@ -40,8 +40,8 @@ export default function Home({ posts }) {
 
   const renderSocialLinks = () => (
     <SectionItemWrapper sectionHeader="social presence">
-      {SOCIAL.map(({ name, url, description }) => (
-        <SectionItem header={name} description={description} url={url} openLinkInNewTab />
+      {SOCIAL.map(({ name, url }) => (
+        <SectionItem header={name} url={url} openLinkInNewTab />
       ))}
     </SectionItemWrapper>
   );
@@ -49,7 +49,7 @@ export default function Home({ posts }) {
   return (
     <>
       <Head>
-        <title>home</title>
+        <title>patrickxrivera</title>
         <link rel="icon" href="/terminal-favicon.ico" />
       </Head>
 
