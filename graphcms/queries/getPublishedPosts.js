@@ -6,6 +6,7 @@ export const GET_PUBLISHED_POSTS = `
       title
       slug
       excerpt
+      date
     }
   }
 `;

@@ -7,12 +7,18 @@ import getPublishedPosts from "../../graphcms/queries/getPublishedPosts";
 import NewsletterSignUp from "../../components/NewsletterSignUp";
 import moment from "moment";
 
+const formatDate = (date) => moment(date).format("MMMM Do YYYY");
+
 export async function getStaticProps({ params }) {
   const post = await getPostBySlug(params.slug);
+
+  // TODO: create featuredPosts query using the tags field
+  const featuredPosts = await getPublishedPosts();
 
   return {
     props: {
       post,
+      featuredPosts,
     },
   };
 }
@@ -42,8 +48,8 @@ function MysteriousPic() {
   );
 }
 
-export default function Post({ post }) {
-  const formattedDate = moment(post.date).format("MMMM Do YYYY");
+export default function Post({ post, featuredPosts }) {
+  const formattedDate = formatDate(post.date);
 
   return (
     <>
@@ -58,8 +64,31 @@ export default function Post({ post }) {
           <p className="italic mb-4">{formattedDate}</p>
           {renderHTML(post.content.html)}
         </div>
-        <div className="mt-20 mb-6">
-          <NewsletterSignUp />
+        <div className="mt-16 mb-6">
+          {featuredPosts && (
+            <div>
+              <p>Moar knowledge 🙇‍♂️</p>
+              <div>
+                {featuredPosts.map(({ title, slug, date }) => {
+                  if (post.slug === slug) return null;
+
+                  return (
+                    <div className="mb-8">
+                      <Link href={`/post/${slug}`}>
+                        <a className="no-underline hover:text-indigo-600">
+                          <p className="my-0 text-lg font-bold">{title}</p>
+                        </a>
+                      </Link>
+                      <p className="my-0 italic text-gray-500">{formatDate(date)}</p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+          <div className="mt-12">
+            <NewsletterSignUp />
+          </div>
         </div>
       </div>
     </>
