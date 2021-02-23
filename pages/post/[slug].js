@@ -75,7 +75,7 @@ export default function Post({ post, featuredPosts }) {
                   return (
                     <div className="mb-8">
                       <Link href={`/post/${slug}`}>
-                        <a className="no-underline hover:text-indigo-600">
+                        <a className="no-underline hover:cursor-pointer hover:text-indigo-600">
                           <p className="my-0 text-lg font-bold">{title}</p>
                         </a>
                       </Link>
