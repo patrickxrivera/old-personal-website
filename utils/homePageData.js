@@ -24,7 +24,7 @@ export const INTERESTS = [
   {
     category: "fun",
     description:
-      "crossfit, yoga, biking, autobiographies, psychedelics, music festivals, YouTube, TikTok",
+      "kettlebell workouts, long walks, biking, autobiographies, psychedelics, music festivals, YouTube, TikTok",
   },
 ];
 
