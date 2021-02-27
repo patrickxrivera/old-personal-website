@@ -19,7 +19,8 @@ export const INTERESTS = [
   },
   {
     category: "music",
-    description: "21 Savage, Drake, Future, Young Thug, Jay Z, Eminem, Bad Bunny, Ozuna",
+    description:
+      "21 Savage, Drake, Future, Young Thug, Jay Z, Eminem, Bad Bunny, Ozuna, EDM, Trap, Headbangin' shit",
   },
   {
     category: "fun",
