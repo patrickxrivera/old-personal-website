@@ -60,14 +60,10 @@ export default function Home({ posts }) {
             <br />
             <br />
             i'm a software engineer at{" "}
-            {/* <a target="_blank" className="underline" href="https://mirror.xyz">
+            <a target="_blank" className="underline" href="https://mirror.xyz">
               Mirror.xyz
             </a>{" "}
-            - a decentralized protocol for publishing. */}
-            <a target="_blank" className="underline" href="https://withlatecheckout.com/">
-              Late Checkout
-            </a>{" "}
-            - a product studio for online communities.
+            - a decentralized protocol for publishing.
             <br />
             <br />
             previously, i was a software engineer on the growth team at{" "}
