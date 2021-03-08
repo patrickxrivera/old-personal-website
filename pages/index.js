@@ -14,10 +14,33 @@ export async function getStaticProps() {
 }
 
 export default function Home({ posts }) {
+  const mirrorPosts = [
+    {
+      title: "Crypto-native newsletter businesses",
+      excerpt: "some ways that crypto can help creators w/ financing, growth, and monetization",
+      href: "https://p.mirror.xyz/CQnk9PLrBAUskCTCHiA5fA9SBDFZGEfCitVH343FWkY",
+      openLinkInNewTab: true,
+    },
+    {
+      title: "Internet Renaissance Vibez",
+      excerpt: "why i decided to join Mirror.xyz and why crypto is the shit",
+      href: "https://p.mirror.xyz/pl07RMWdJZktHUAn8hZ02YlO35-Ju49orPrhaRnn4Vo",
+      openLinkInNewTab: true,
+    },
+  ];
+
+  const postsSliced = posts.slice(0, 3);
+
   const renderEssays = () => (
     <SectionItemWrapper sectionHeader="essays">
-      {posts.map((post) => (
-        <SectionItem header={post.title} description={post.excerpt} url={`/post/${post.slug}`} />
+      {[...mirrorPosts, ...postsSliced].map((post) => (
+        <SectionItem
+          header={post.title}
+          description={post.excerpt}
+          slug={`/post/${post.slug}`}
+          href={post.href}
+          openLinkInNewTab={post.openLinkInNewTab}
+        />
       ))}
     </SectionItemWrapper>
   );
