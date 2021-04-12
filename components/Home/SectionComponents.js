@@ -43,7 +43,7 @@ export function SectionItem({ header, description, slug, href, openLinkInNewTab 
       <SectionDescription text={description} />
     </>
   );
-
+  console.log({ slug, href });
   return (
     <div className="flex mt-6">
       <span>〉</span>

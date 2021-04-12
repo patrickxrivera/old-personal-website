@@ -16,20 +16,26 @@ export async function getStaticProps() {
 export default function Home({ posts }) {
   const mirrorPosts = [
     {
-      title: "Crypto-native Newsletter Businesses",
-      excerpt: "some ways that crypto can help creators w/ financing, growth, and monetization",
+      title: "Tips for creators getting into crypto",
+      excerpt: "A framework for progressively going down the crypto rabbit hole",
+      href: "https://p.mirror.xyz/WQQywdjjfnksMRPMaNKBMxPBqfE5k8nL6pCLe1roGyw",
+      openLinkInNewTab: true,
+    },
+    {
+      title: "Crypto-native newsletter businesses",
+      excerpt: "Some ways that crypto can help creators w/ financing, growth, and monetization",
       href: "https://p.mirror.xyz/CQnk9PLrBAUskCTCHiA5fA9SBDFZGEfCitVH343FWkY",
       openLinkInNewTab: true,
     },
     {
-      title: "Internet Renaissance Vibez",
-      excerpt: "why i decided to join Mirror.xyz and why crypto is the shit",
+      title: "Internet renaissance vibez",
+      excerpt: "Why i decided to join Mirror.xyz and why crypto is the shit",
       href: "https://p.mirror.xyz/pl07RMWdJZktHUAn8hZ02YlO35-Ju49orPrhaRnn4Vo",
       openLinkInNewTab: true,
     },
   ];
 
-  const postsSliced = posts.slice(0, 3);
+  const postsSliced = posts.slice(0, 2);
 
   const renderEssays = () => (
     <SectionItemWrapper sectionHeader="essays">
@@ -64,7 +70,16 @@ export default function Home({ posts }) {
   const renderSocialLinks = () => (
     <SectionItemWrapper sectionHeader="social presence">
       {SOCIAL.map(({ name, url }) => (
-        <SectionItem header={name} url={url} openLinkInNewTab />
+        <div className="flex mt-6">
+          <span>〉</span>
+          <li className="mt-0 ml-2 flex flex-col">
+            <a href={url} target="_blank" className="no-underline">
+              <span className="text-mustard hover:text-black hover:bg-mustard focus:text-black focus:bg-mustard">
+                {name}
+              </span>
+            </a>
+          </li>
+        </div>
       ))}
     </SectionItemWrapper>
   );
@@ -86,7 +101,7 @@ export default function Home({ posts }) {
             <a target="_blank" className="underline" href="https://mirror.xyz">
               Mirror.xyz
             </a>{" "}
-            - a decentralized protocol for publishing.
+            - a decentralized protocol that helps creators with financing, growth, and monetization.
             <br />
             <br />
             previously, i was a software engineer on the growth team at{" "}
@@ -99,7 +114,7 @@ export default function Home({ posts }) {
             </a>
             .
             <br />
-            <br />i also write about crypto, startups, and life.
+            <br />i also write about crypto, startups, and the creator economy.
           </p>
           {renderEssays()}
           {renderInterests()}

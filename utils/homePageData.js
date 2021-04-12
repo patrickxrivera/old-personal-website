@@ -15,7 +15,7 @@ export const INTERESTS = [
   {
     category: "professional",
     description:
-      "crypto, software engineering, product development, business strategy, community building, investing, teaching, writing",
+      "crypto, software engineering, product, business strategy, community building, investing, teaching, writing",
   },
   {
     category: "music",
